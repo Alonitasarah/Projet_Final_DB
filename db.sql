@@ -190,3 +190,15 @@ JOIN gare On trajet.id_gare=gare.id_gare
 JOIN compagnie ON gare.id_compagny=compagnie.id_compagny
 WHERE trajet.typ_voyage='allerretour' 
 AND compagnie.nom='utb';
+
+
+
+-- requetes pour l'API de recherche
+
+SELECT trajet.depart,trajet.destination,trajet.typ_voyage,trajet.prix,trajet.date,trajet.duree,
+       trajet.heuredepart,trajet.heurearrive,compagnie.nom,compagnie.email,compagnie.adresse,
+	   compagnie.telephone
+FROM trajet,gare,ville,compagnie
+WHERE trajet.id_gare=gare.id_gare
+AND ville.id_ville=gare.id_ville
+AND gare.id_compagny=compagnie.id_compagny
